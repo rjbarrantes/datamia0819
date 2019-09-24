@@ -1,0 +1,37 @@
+MACHINE LEARNING
+
+recommender systems
+  used to determine recommendations
+  based on user or product comparisons
+    distance metrics used to measure closeness
+    recommendations are based on closeness of person and strength of recommendation
+
+survival analysis
+  probability of survival
+    car engine
+    human
+    insurance policy
+    churn
+  need three fields
+    column = probability of event (1/0)
+    row = datetime (equidistant)
+    color = groupings
+  fit === learning from data
+
+time series
+  static data === independent observations
+    y depends on coefficients and x's
+    y = b0 + b1x + ...
+  time-ordered data === dependent observations
+    y depends on previous y
+      can be confirmed using a lagplot (scatterplot of yt and yt-1)
+    yt = b0 + b1 yt-1
+    auto-regression
+    non-systematic === random, error term
+      cannot be modeled
+    systematic === non-random
+      things model takes into account when making predictions
+      average (by time interval)
+      seasonality
+      trend (big-picture)
+      noise (errors)
