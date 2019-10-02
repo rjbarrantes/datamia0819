@@ -35,3 +35,67 @@ time series
       seasonality
       trend (big-picture)
       noise (errors)
+
+supervised (inferential)
+  training and test set
+  always has x and y (target)
+  prediction
+    numeric
+      regression
+        bi/multivariate
+        k-nn
+          nonparametric
+          average k nearest points
+          piecewise 
+        SVR
+    categorical
+      logistic regression
+        bi/multinomial
+        SVC
+    accuracy
+      R^2, R^2adj, MSE, RMSE
+      MAE, MAD, MAPE usually used for time-series
+      based on differences between actual and predicted targets (residuals)
+  validation
+    hyperparameter tuning
+    adjust parameters to get best mix wrt accuracy
+    has training, validation, AND test sets
+  cross-validation
+    run train/test multiple times to get an average
+    average is more robust and less varied
+  classification
+    logistic regression
+      provides sigmoid function
+      maps probability to a classification
+      probability threshold usually .5
+      for more categories - create more ranges
+    naive bayes
+      bayes law = P(A|B) = P(B|A) * P(A) / P(B)
+    accuracy
+      accuracy score = rate of match between actual and predicted targets
+        if data imbalanced, accuracy score might overestimate
+        need enough number of observations in each cell (70/30 is good cutoff)
+      balanced accuracy = more robust
+        includes weights based on sample sizes
+        larger size results in smaller weight
+        better to balance sizes in collection
+      confusion matrix =
+                  predicted
+                  y      n     
+        actual  y True+  False-
+                n False+ True-
+      precision = True+ / (True+ + False+)
+        true-positive given predicted positive
+      recall
+unsupervised (descriptive)
+  only has x (no target)
+  k-means 
+  used for clustering/segmentation
+  no measure of accuracy
+decision trees
+
+extract
+transformation
+loading
+  
+  

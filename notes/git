@@ -43,15 +43,15 @@ github === version control
 
 fork clone makechange gitstatus gitadd gitcommit gitpush gitpull
 
-ih-ftda-api_scavenger_game: 97cb22f38caf4a08fb59193fa7e964fae87eafc3
+ADD LARGE FILES
+git lfs track "PATH"
+git add .gitattributes
+git add PATH
+git commit -m "MESSAGE"
+git push origin master
 
-curl -u rjbarrantes:97cb22f38caf4a08fb59193fa7e964fae87eafc3 https://api.github.com/user > output.json
 
-YELP
-client = TQV18Rn3J0kLRzvUJvBqCA
-api = 7fBRyuGNiSgmuUWQGdYG7wKnqZqei_46LKZBaxtYRV590N-85Wq725M_qwnnayfQd0zHp--rLFXtkr82zkFdq93Sg6YzAEJbjoIwl5aF4_A8j500GcUoKODTHzCJXXYx
+UNDO BAD COMMIT
+git revert GOOD_COMMIT_HASH
 
-
-GMAPS
-api = AIzaSyC770X2wPC7t0eJavbamCpCj6VrT-DyL1U
-
+bbb0ea004437f3168ae3cf52fe9a00751ee87d09
