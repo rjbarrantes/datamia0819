@@ -1,0 +1,60 @@
+def age(dob):
+    if dob.month <= pd.Timestamp.now().month & dob.day <= pd.Timestamp.now().day:
+        return pd.Timestamp.now().year - dob.year
+    else:
+        return pd.Timestamp.now().year - dob.year + 1
+def missingness(df):
+    return df.isnull().sum() / df.shape[0]
+---
+
+sns.pairplot(customers.iloc[:, 2:], diag_kind = 'kde')
+---
+
+def boxplots(df, mult = 1.5):
+    import seaborn as sns
+
+    fig = plt.figure(figsize = (20, 11.25))
+    sns.set_context('notebook')
+    
+    return sns.boxplot(data = df, orient = 'h', palette = sns.husl_palette(10, h = .01, s = 1, l = .7), whis = mult)
+---
+
+def outliers_iqr(df, mult = 1.5):
+    outliers = []
+
+    for i in df.columns:
+        iqri = df.describe()[i]['75%'] - df.describe()[i]['25%']
+        loweri = df.describe()[i]['25%'] - mult * iqri
+        upperi = df.describe()[i]['75%'] + mult * iqri
+
+        outliers.append(df[(df[i] < loweri) | (df[i] > upperi)])
+    outliers = pd.concat(outliers).drop_duplicates().sort_index()
+    return outliers
+---
+
+def outliers_std(df, mult = 2):
+    outliers = []
+
+    for i in df.columns:
+        stdi = df.describe()[i]['std']
+        loweri = df.describe()[i]['mean'] - mult * stdi
+        upperi = df.describe()[i]['mean'] + mult * stdi
+
+        outliers.append(df[(df[i] < loweri) | (df[i] > upperi)])
+    outliers = pd.concat(outliers).drop_duplicates().sort_index()
+    return outliers
+---
+
+def missingness(df):
+    return df.isnull().sum() / df.shape[0]
+---
+
+def collinearity(df):
+    import seaborn as sns
+
+    fig = plt.figure(figsize = (20, 11.25))
+    mask = np.zeros_like(df.corr())
+    mask[np.triu_indices_from(mask)] = True
+    sns.set_context('notebook')
+    
+    return sns.heatmap(df.corr(), mask = mask, cmap = 'Blues', annot = True, vmin = 0, vmax = 1)

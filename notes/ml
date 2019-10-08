@@ -72,30 +72,102 @@ supervised (inferential)
     naive bayes
       bayes law = P(A|B) = P(B|A) * P(A) / P(B)
     accuracy
-      accuracy score = rate of match between actual and predicted targets
-        if data imbalanced, accuracy score might overestimate
-        need enough number of observations in each cell (70/30 is good cutoff)
-      balanced accuracy = more robust
-        includes weights based on sample sizes
-        larger size results in smaller weight
-        better to balance sizes in collection
       confusion matrix =
                   predicted
                   y      n     
         actual  y True+  False-
                 n False+ True-
+      accuracy score = (True+ + True-)/ total
+        rate of match between actual and predicted targets
+        if data imbalanced, accuracy score might overestimate
+        need enough number of observations in each cell (70/30 is good cutoff)
+        balanced accuracy = more robust
+          includes weights based on sample sizes
+          larger size results in smaller weight
+          better to balance sizes in collection
       precision = True+ / (True+ + False+)
         true-positive given predicted positive
-      recall
+      recall = True+ / (True+ + False-)
+        true-positive given actual positive
+      roc plot = plot True+ and False+ rate
+        good if plot above diagonal line
+        auc (integral of roc) = larger is good
 unsupervised (descriptive)
   only has x (no target)
-  k-means 
   used for clustering/segmentation
+  distances between observations in nd space
+    euclidean distance (c^2 = a^2 + b^2)
+      c
+    manhattan distance
+      a + b
+      moving in axis grids
+    cosine distance
   no measure of accuracy
+    need k
+      k-means (numerical)
+        k centroids placed randomly
+        k centroids eventually move to closest k clusters of data
+          can one-hot encode, but categorical better with k-mode
+        limitation is selecction of k
+      k-mode (categorical)
+      k-prototype
+      gmm = gaussian mixture model
+        fitting to normal distributions
+        expectation maximization algorithims
+    no k needed
+      hierarchical clustering
+      agglomerative clustering
+        bottom-up
+          each point is a cluster
+          clusters form with closest points
+          keeps going algorithmically
+      dbscan = density-based spatial clustering of applications with noise
+        specify minimum points and minimum distance (ε) instead of k
+        more robust to outliers
+  evaluating clusters
+    pca
+    som = self-organizing maps
+    tsne = stochastic neighbors
+    silhouette score
+      (b - a) / max(a, b)
+      a = within-cluster variation
+      b = between-cluster variation
+      between -1 and 1 where closer to 1 is better
+      similar to k-means optimization, so can lead to overfitting
+        having a hold-out test set of data can help with this issue
+      favors convex clusters 
+        this is fine for data that is amenable to k-means style clustering
+          for many datasets it will give an artificially low score
+    optimal clusters
+      plot kmeans inertia by number of clusters
+      optimal at the point where the elbow or inflection point changes significantly
+  
 decision trees
+  can be used for classification and regression
+  decisions at each interior node (binary)
+    each observation is sent down the tree until it hits a bottom node (tree leaf)
+    y value depends on which segment of x the observation falls into
+    with more than one, observation goes through decisions on both variables
+    regression decisions are based on xi < c
+    classification decsisions are based on xi : c
+  ensemble methods
+    bagging
+      boostrap aggregate
+      take b bootstrap samples from training data each same size as training data
+        with replacement
+      fit large tree to each bootstrap sample
+        b trees
+      combine results from each of the b trees to get an overall prediction
+    boosting
+  random forests
+    several trees taken into account
+    b = bootstrap samples
+    m = number of variables to sample
+      common is m = p**.5
+      p = dimenion of x
+    maximizes impact of important features
 
 extract
 transformation
 loading
-  
-  
+
