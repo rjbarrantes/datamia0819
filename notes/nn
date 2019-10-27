@@ -1,0 +1,49 @@
+NEURAL NETWORKS
+
+artificial neural network (ann)
+  input layer
+    independent variables (Xi)
+    row by row
+    synapse
+      Wi associated with each Xi
+  nodes
+    hidden layers
+    (activation fx) * (sum of Xi*Wi)
+  output layer
+    Yi prediction for each row
+
+  activation functions
+    threshold = piecewise function where 0 for x <= 0 and 1 for x > 0
+    sigmoid = s-shaped curve (x: -inf, +inf, y: 0, 1)
+    rectified = 0 for x <= 0, and linearly increasing for x > 0
+    tanh = like sigmoid but stretched across y (x: -inf, +inf, y: -1, 1)
+
+  forward propagation
+    data fed in to determine output
+
+  back propagation
+    comparison of predictions and actual values
+    the goal is to minimize cost or loss function (based on residuals)
+      epoch = goes through entire dataset
+      gradient descent = update weights batch by batch
+      stochastic gradient descent = update weights row by row
+        computationally faster since not having to take entire dataset into account for each weight adjustment
+        more likely to find global minimum because weights fluctuate more
+      minibatch = between gradient and stochastic gradient descents
+
+  common 
+    apply rectified in hidden layers
+    activation of output layer depends on y
+      binary = threshold or sigmoid (P(y = 0) or P(y = 1))
+
+  steps
+    randomly initialize weights (close to 0)
+    input first observation in input layer (each feature as one input node)
+    forward propagation (find y-hat)
+    compare y and y-hat to get error
+    back propagation (learning rate determines how much weights are updated)
+    repeat for all observations
+    epoch completed and repeat
+
+convolutional neural networks (cnn)
+  used for image recognition
