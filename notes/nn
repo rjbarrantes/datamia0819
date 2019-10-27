@@ -47,3 +47,33 @@ artificial neural network (ann)
 
 convolutional neural networks (cnn)
   used for image recognition
+  
+  feature detector (kernel)
+    typically 3x3, but can be any odd combo (5x5, 7x7, etc.)
+    convolutional operation = x in a circle
+  
+  feature map = sum of element-wise multiplication of kernel and 3x3 slice of image
+    convolved feature
+    stride = step at which the kernel moves through the image
+      typically 2, but default in keras is 1
+    maintains spacial relationships
+  
+  convolutional layer = series of feature maps
+    rectifier used to allow for non-linearity in intermediate layers
+
+  pooling
+    allows for spacial invariance and reduces the size
+    can be max, mean, sum, etc. type of pooling
+    applied to feature maps
+      typically done with 2x2 squares and stride of 2
+
+  flattening
+    take values in pooled layer into a flattened input layer for the ann
+
+  full connection
+    addition of ann to the back of cnn
+    allows for better predictions from features extracted by cnn
+    
+
+
+
